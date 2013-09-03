@@ -16,9 +16,8 @@ class TestCleanUp < Test::Unit::TestCase
   MD5_OUTPUTFILE_EXMAPLE = '1accba053a579144a74d3f49ab77936f'
   MD5_OUPUTFILE = Digest::MD5.hexdigest(File.read OUTPUTFILE)
 
-  def test_cleanup_html   
-
-    # assert input exmaple data is not changed          
+  def test_cleanup_html
+    # assert input exmaple data is not changed
     assert_equal MD5_INPUTFILE_EXMAPLE, Digest::MD5.hexdigest(File.read INPUTFILE_EXMAPLE), 'input example changed?'
     # assert output exmaple data is not changed
     assert_equal MD5_OUTPUTFILE_EXMAPLE, Digest::MD5.hexdigest(File.read OUTPUTFILE_EXMAPLE), 'output example changed?'

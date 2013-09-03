@@ -1,6 +1,7 @@
 require 'csv'
 require 'fileutils'
 require 'html_massage'
+require 'digest/md5'
 
 # USAGE: ruby -w script.rb inputfile
 
@@ -19,7 +20,14 @@ def cleanup_html inputfile
 	end
 end
 
-inputfile = ARGV[0] || 'itest-xiezuo.csv'
-c_clean = cleanup_html(inputfile)
-p "生成了itest-xiezuo-cleanup.csv"
-File.write('itest-xiezuo-cleanup.csv', c_clean.join)
+def main
+	input = ARGV[0] || 'data/itest-xiezuo.csv'
+	p "输入文件是#{input}"
+	out = ARGV[1] || 'data/itest-xiezuo-cleanup.csv'
+	cleaned = cleanup_html(input)
+	p "生成了#{out}"
+	File.write(out, cleaned.join)
+end
+
+# run
+main if __FILE__== $0
